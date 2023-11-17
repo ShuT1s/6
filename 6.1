@@ -1,6 +1,7 @@
 #Вводятся К целых чисел. Составьте все возможные списки из этих чисел.
 import itertools
 c=0
+z=0
 k = input("Введите целые числа, разделенные пробелами: ")
 while k=='':
     print('Вы ничего не ввели, введите одно или несколько целых чисел')
@@ -9,8 +10,10 @@ while c==0:
     a = k.split()
     for i in a:
         try:
-            z=int(i)/int(i)
-            if z==1:
+            f=int(i)
+            if type(f)==int:
+                z+=1
+            if z==len(a):
                 c+=1
         except ValueError:
             a=[]
