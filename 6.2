@@ -4,6 +4,9 @@ c=0
 v=0
 s=0
 l=0
+z=0
+e=[]
+a=[]
 k = input("Введите целые простые числа, разделенные пробелами: ")
 while k=='':
     print('Вы ничего не ввели, введите одно или несколько целых простых чисел')
@@ -13,8 +16,10 @@ while c==0:
     b = len(a)
     for i in a:
         try:
-            z=int(i)/int(i)
-            if z==1:
+            f = int(i)
+            if type(f) == int:
+                z += 1
+            if z == len(a):
                 c+=1
         except ValueError:
             a=[]
@@ -24,18 +29,26 @@ while c==0:
     while l!=b:
         a = k.split()
         for i in a:
+            d=a.index(i)
             for x in range(2, int(i) // 2 + 1):
-                if (int(i) % x == 0):
-                    v = v + 1
-            if v==0:
-                l+=1
-            else:
-                a = []
-                print('Вы ввели одно или несколько не простых чисел, вводите простые числа')
-                k = input('Введите простые числа, разделенные пробелами: ')
-                break
-a=k.split()
+                if (int(i) % x != 0):
+                    a=a
+                else:
+                    if len(a)==0:
+                        break
+                    e=a.pop(d)
+                    break
+        if len(a)!=0:
+            l+=1
+        else:
+            a = []
+            print('В списке нет простых чисел, поэтому и комбинаций нет')
+            k = input('Введите одно или несколько простых чисел, разделенные пробелами: ')
+            break
 b=len(a)
+if a==[]:
+    b=len(e)
+    a=k
 n=b
 count=1
 m=0
